@@ -1,34 +1,20 @@
-const Alexa = require('alexa-sdk');
+"use strict";
 
-var APP_ID = undefined;
-
-var SKILL_NAME = 'Hello World';
-var RESPONSE_MESSAGE = 'Hello!';
-
-
-var data = [
-    'UK' = {
-        text: 'I would recommend a carling. In UK'
-    },
-
-    'IRELAND' = {
-        text: 'I would recommend a guiness. In Ireland'
-    }
-]
-
-exports.handler = function(event, context, callback) {
-    var alexa = Alexa.handler(event, context);
-    alex.registerHandlers(handlers);
-    alexa.execute();
-};
+var Alexa = require("alexa-sdk");
 
 var handlers = {
-    'LaunchRequest': function() {
-        this.emit(':ask', 'I can suggest a drink from a random country!');
-    },
-    'MakeRecommendation': function() {
-        for(var i = 0; i < data.length; i++) {
-           this.emit(':tell', data[i].text);
-        }
-    }
-}
+  "HelloIntent": function () {
+    this.response.speak("Hello, Codecademy"); 
+    this.emit(':responseReady');
+  },
+  "LaunchRequest": function () {
+    this.response.speak("Welcome to Codecademy"); 
+    this.emit(':responseReady');
+  }
+};
+
+exports.handler = function(event, context, callback){
+  var alexa = Alexa.handler(event, context);
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
