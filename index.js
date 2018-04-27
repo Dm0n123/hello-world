@@ -28,7 +28,7 @@ var handlers = {
     },
     'MakeRecommendation': function() {
         for(var i = 0; i < data.length; i++) {
-           return data[i].text;
+           this.emit(':tell', data[i].text);
         }
     }
 }
